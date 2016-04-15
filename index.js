@@ -47,7 +47,8 @@ app.post('/webhook/', function (req, res) {
 	res.sendStatus(200)
 })
 
-var token = ""
+// Our token which was authed by facebook
+var token = "CAAHrm2AtZB7ABAJz5wdCtZAKCKNhtQnn2OfjKRJKEkmQzShF1B2gHY50PDvb1W4MEgMuqb0pYNuGSMVOitrYaezRDhyg1ZCbX973PhuOaIniKGNqZAHKyzfTdjNpZAaVPzI8zuwZC36ux2c0nqWfoLjZBSOzFErQbtZCqpoNI0es3irNelHxjQ8xmuZCZCYwJM0ZB3iS3KwDXgMEQZDZD"
 
 function sendTextMessage(sender, text) {
 	messageData = {
@@ -117,6 +118,28 @@ function sendGenericMessage(sender) {
 			console.log('Error: ', response.body.error)
 		}
 	})
+}
+
+// Echos back messages
+function sendTextMessage(sender, text) {
+    messageData = {
+        text:text
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
 }
 
 // spin spin sugar
