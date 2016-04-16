@@ -37,7 +37,8 @@ app.post('/webhook/', function (req, res) {
 			if (text === 'Generic') {
 				sendGenericMessage(sender);
 				continue;
-			} else if ((text === 'wtf') || (text === 'WTF')) {
+				// Checks and accounts for all types of Wtf, or wTf, or wtF, etc
+			} else if (text.toUpperCase() === 'WTF') {
 				watchYourLanguage(sender);
 				continue;
 			}
