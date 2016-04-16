@@ -41,7 +41,7 @@ app.post('/webhook/', function (req, res) {
 				watchYourLanguage(sender);
 				continue;
 			}
-			sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200));
+			sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200));
 		}
 		if (event.postback) {
 			text = JSON.stringify(event.postback);
@@ -74,8 +74,8 @@ function sendTextMessage(sender, text) {
         } else if (response.body.error) {
             console.log('Error: ', response.body.error);
         }
-    })
-};
+    });
+}
 
 
 // Shows the card view
@@ -131,7 +131,8 @@ function sendGenericMessage(sender) {
 // Show the watch your language message
 function watchYourLanguage(sender) {
 	messageData = {
-		text: "watch your lanauge",
+		// How to send text back to user
+		text: "watch your language",
 	};
 	// Makes the request
 	request({
