@@ -41,6 +41,9 @@ app.post('/webhook/', function (req, res) {
 			} else if (text.toUpperCase() === 'WTF') {
 				watchYourLanguage(sender);
 				continue;
+			} else if (text.toUpperCase() === 'TOP') {
+				topKek(sender);
+				continue;
 			}
 			sendTextMessage(sender, text.substring(0, 200));
 		}
@@ -133,9 +136,31 @@ function sendGenericMessage(sender) {
 function watchYourLanguage(sender) {
 	messageData = {
 		// How to send text back to user
-		text: "watch your language",
+		text: "Watch your language",
 	};
 	// Makes the request
+	request({
+		url: 'https://graph.facebook.com/v2.6/me/messages',
+		qs: {access_token:token},
+		method: 'POST',
+		json: {
+			recipient: {id:sender},
+			message: messageData,
+		}
+	}, function(error, response, body) { // Error handling
+		if (error) {
+			console.log('Error sending messages: ', error);
+		} else if (response.body.error) {
+			console.log('Error: ', response.body.error);
+		}
+	});
+}
+
+// Show the 'kek' message
+function topKek(sender) {
+	messageData = {
+		text: "kek",
+	};
 	request({
 		url: 'https://graph.facebook.com/v2.6/me/messages',
 		qs: {access_token:token},
