@@ -57,7 +57,7 @@ app.post('/webhook/', function (req, res) {
 });
 
 // Our token which was authed by facebook
-var token = "CAAHrm2AtZB7ABAJz5wdCtZAKCKNhtQnn2OfjKRJKEkmQzShF1B2gHY50PDvb1W4MEgMuqb0pYNuGSMVOitrYaezRDhyg1ZCbX973PhuOaIniKGNqZAHKyzfTdjNpZAaVPzI8zuwZC36ux2c0nqWfoLjZBSOzFErQbtZCqpoNI0es3irNelHxjQ8xmuZCZCYwJM0ZB3iS3KwDXgMEQZDZD";
+var token = "CAAHrm2AtZB7ABAI6rVUVZBbACcYuZB2IoVavdTMZB2Aiq8dkksm7P0kgor0ekjD5SxxcZATmmA95v4XstnYZCD3L1OU22a56ZBFHxNdO1A1n6hxu6VBpjPb94uJ4CJDGFnowUBXvgKqbj67EA5wimUTD0I4W1mixlI1t2kiXi2gw7TBLLfL4mrZAXaMvRj5fvI6VwjGzmPax2AZDZD";
 
 // Echos back messages
 function sendTextMessage(sender, text) {
